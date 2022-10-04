@@ -982,4 +982,46 @@ Java保留字: 现有Java版本尚未使用,但以后版本可能会作为关键
       }
   ```
 
-  
+
+
+
++ `switch` 分支结构
+  基本语法
+
+  ```java
+  	switch (表达式) {
+          case 常量1: 语句块1; break;
+          case 常量2: 语句块2; break;
+          ...
+          case 常量n: 语句块n; break;
+          default: 语句块; break;
+      }
+  ```
+
+  1. `switch`关键字,表示`switch`分支
+  2. 表达式对应一个值
+  3. `case 常量1:` 当表达式的值等于常量1,就执行语句块1
+  4. `break` : 表示退出`switch`
+  5. 如果和`case 常量1`匹配,就执行语句块1,如果没有匹配,就继续匹配`case 常量2`
+  6. 如果一个都没有匹配上,执行`default`
+
++ `switch`注意事项和细节讨论
+
+  1. 表达式数据类型,应和`case`后的常量<font color=yellow>类型一致</font>,或者是<font color=yellow>可以自动转成可以相互比较的</font>类型,比如输入的是字符,而常量是`int`
+
+  2. `switch(表达式)`中表达式的返回值必须是 : (byte, short, int, char, enum[枚举], String)
+
+     ```java
+     	double c = 1.1;
+     	switch (c) { // 错误 表达式不能是double型
+             case 1.1 : // 错误
+                 System.out.println("ok");
+                 break;
+         }
+     ```
+
+  3. `case` 子句中的值必须是常量,而不能是变量
+
+  4. `default`子句是可选的,当没有匹配的`case`时,执行`default`
+
+  5. `break`语句用来执行完一个`case`分支后使程序跳出`switch`语句块;如果没有写`break`,程序会顺序执行到`switch`结尾
